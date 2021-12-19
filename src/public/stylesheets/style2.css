@@ -1,0 +1,22 @@
+header {
+    color: white;
+    background-color: #2D4263;
+    padding: 15px;
+}
+
+body{
+    background-color: #041C32;
+    color: #F3F1F5;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+button{
+    color: red;
+    size: 30px;
+}
+
+.return{
+    height: 30px;
+    width: 90px;
+}

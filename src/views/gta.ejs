@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoTagApp</title>
+    <link rel='stylesheet' href='./stylesheets/style.css'/>
+    <link rel="icon" href="data:;base64,iVBORwOKGO="/>
+</head>
+
+<body>
+<header>
+    <img src="./images/location.png" width="100"
+         alt="an image of a map and location">
+    <h1>GeoTagApp</h1>
+
+    <nav>
+        <a href="/about">About</a> | <a href="/">Home</a>
+    </nav>
+</header>
+<main>
+    <div class="row">
+
+        <div class="col-3 ">
+            <section class="tagging">
+                <h2>Tagging</h2>
+                <form id="tag-form" onsubmit="return () => {}">
+                    <fieldset>
+                        <legend>
+                            <b>Enter new GeoTag</b>
+                        </legend>
+                        <label for="latitude">latitude<br>
+                        <input type="number" class="input-box" name="latitude" id="latitude" step="any" required value=
+                        <% if (typeof latitude != 'undefined') { %>
+                        <%= latitude %>
+                                <% } %>>
+                        <br></label>
+                        <label for="longitude">longitude<br>
+                        <input type="number" class="input-box" name="longitude" id="longitude" step="any" required
+                               value=
+                               <% if (typeof longitude != 'undefined') { %>
+                               <%= longitude %>
+                                <% } %>>
+                        <br></label>
+                        <label for="name">name<br>
+                        <input type="text" placeholder="insert name" class="input-box" name="name" id="name" required>
+                        <br></label>
+                        <label for="hashtag">hashtag<br>
+                        <input type="text" pattern="^#[A-z]{1,10}" placeholder="# + max. 10 letters" class="input-box"
+                               name="hashtag" id="hashtag" title="Must start with # followed by 1-10 letters!">
+                        <br></label>
+                        <button type="button" id="tagging-button">apply</button>
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+
+        <div class="col-9 ">
+            <section class="discovery">
+                <form id="filter-form">
+                    <h2>Discovery</h2>
+                    <fieldset>
+
+                        <legend>
+                            <b>Filter by Searchterm</b>
+                        </legend>
+                        <label>
+                            <input type="text" placeholder="search term" name="searchTerm" class="input-box"
+                                   id="searchTerm">
+
+                        </label>
+                        <button type="button" id="discovery-button">search</button>
+                    </fieldset>
+                </form>
+
+                <div class="col-4 ">
+                    <div class="taglist">
+                        <ul id="results">
+                            <% if (taglist !== undefined) taglist.forEach(function(gtag) { %>
+                                <li><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>
+                                    ) <%= gtag.hashtag %> </li>
+                            <% }); %>
+
+                        <!--optional for pagination (not done yet) -->
+                        </ul>
+                        <div class="page-container" id="pages-container">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-8 ">
+                    <div class="tagmap">
+                        <img id="result-img" src="./images/mapview.jpg" alt="a map with locations" data-tags=
+                        <% if (typeof taglist != 'undefined') { %>
+                        <%= JSON.stringify(taglist) %>
+                                <% } %>
+                        />
+                        <div class="caption">Result map</div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</main>
+<footer>
+    <span>2021 by Sven</span>
+</footer>
+<!-- Load JavaScripts
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="./javascripts/geotagging.js"></script>
+</body>
+</html>

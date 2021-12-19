@@ -1,0 +1,16 @@
+{
+  "name": "geotagapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./gta-server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "ejs": ">=2.5.5",
+    "express": "^4.17.2",
+    "morgan": ">=1.9.1",
+    "nstall": "^0.2.0",
+    "process": "^0.11.10"
+  }
+}
